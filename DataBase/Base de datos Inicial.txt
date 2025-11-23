@@ -1,0 +1,146 @@
+-- ---------------------------------------------------------
+-- 1. MÓDULO DE SEGURIDAD (RBAC)
+-- ---------------------------------------------------------
+
+CREATE TABLE rol (
+    id BIGSERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL UNIQUE, -- Ej: 'Admin', 'Cajero'
+    descripcion VARCHAR(200)
+);
+
+CREATE TABLE permiso (
+    id BIGSERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL, -- Ej: 'Ver Reportes'
+    codigo_interno VARCHAR(50) NOT NULL UNIQUE -- Ej: 'REPORT_VIEW' (Para usar en C#)
+);
+
+-- Tabla intermedia para la Matriz de Permisos
+CREATE TABLE roles_permisos (
+    id_rol BIGINT NOT NULL,
+    id_permiso BIGINT NOT NULL,
+    PRIMARY KEY (id_rol, id_permiso),
+    CONSTRAINT fk_rp_rol FOREIGN KEY (id_rol) REFERENCES rol(id) ON DELETE CASCADE,
+    CONSTRAINT fk_rp_permiso FOREIGN KEY (id_permiso) REFERENCES permiso(id) ON DELETE CASCADE
+);
+
+CREATE TABLE usuario (
+    id BIGSERIAL PRIMARY KEY,
+    id_rol BIGINT NOT NULL,
+    nombre_completo VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE, -- Login
+    password_hash VARCHAR(255) NOT NULL, -- Recuerda hashear en C#
+    activo BOOLEAN DEFAULT TRUE,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_usuario_rol FOREIGN KEY (id_rol) REFERENCES rol(id)
+);
+
+-- ---------------------------------------------------------
+-- 2. MÓDULO DE INVENTARIO Y PROVEEDORES
+-- ---------------------------------------------------------
+
+CREATE TABLE proveedor (
+    id BIGSERIAL PRIMARY KEY,
+    nombre_empresa VARCHAR(100) NOT NULL,
+    nombre_contacto VARCHAR(100),
+    telefono VARCHAR(20),
+    email VARCHAR(100),
+    activo BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE inventario (
+    id BIGSERIAL PRIMARY KEY,
+    nombre VARCHAR(150) NOT NULL, 
+    descripcion TEXT,
+    stock_actual DECIMAL(10, 4) DEFAULT 0, 
+    stock_minimo DECIMAL(10, 4) DEFAULT 5, 
+    costo_promedio DECIMAL(10, 2) DEFAULT 0 
+);
+
+CREATE TABLE rel_proveedor_inventario (
+    id BIGSERIAL PRIMARY KEY,
+    id_proveedor BIGINT NOT NULL,
+    id_inventario BIGINT NOT NULL,
+    precio_ultimo_costo DECIMAL(10, 2),
+    codigo_catalogo_proveedor VARCHAR(50),
+    CONSTRAINT fk_rpi_proveedor FOREIGN KEY (id_proveedor) REFERENCES proveedor(id),
+    CONSTRAINT fk_rpi_inventario FOREIGN KEY (id_inventario) REFERENCES inventario(id)
+);
+
+-- ---------------------------------------------------------
+-- 3. MÓDULO DE PRODUCTOS Y RECETAS
+-- ---------------------------------------------------------
+
+CREATE TABLE producto (
+    id BIGSERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL, -- Ej: 'Capuchino Grande'
+    precio_venta DECIMAL(10, 2) NOT NULL,
+    imagen_url TEXT,
+    categoria VARCHAR(50), -- Ej: 'Bebidas Calientes', 'Postres'
+    es_compuesto BOOLEAN DEFAULT TRUE, -- TRUE si usa receta, FALSE si es reventa directa (ej. lata refresco)
+    activo BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE receta (
+    id BIGSERIAL PRIMARY KEY,
+    id_producto BIGINT NOT NULL,
+    id_inventario BIGINT NOT NULL,
+    cantidad_requerida DECIMAL(10, 4) NOT NULL, 
+    CONSTRAINT fk_receta_producto FOREIGN KEY (id_producto) REFERENCES producto(id) ON DELETE CASCADE,
+    CONSTRAINT fk_receta_inventario FOREIGN KEY (id_inventario) REFERENCES inventario(id)
+);
+
+-- ---------------------------------------------------------
+-- 4. MÓDULO DE VENTAS Y CAJA
+-- ---------------------------------------------------------
+
+CREATE TABLE cliente (
+    id BIGSERIAL PRIMARY KEY,
+    nombre VARCHAR(100),
+    telefono VARCHAR(20),
+    email VARCHAR(100),
+    nit_rfc VARCHAR(20), -- Para facturación
+    puntos_acumulados INT DEFAULT 0
+);
+
+CREATE TABLE caja (
+    id BIGSERIAL PRIMARY KEY,
+    id_usuario_apertura BIGINT NOT NULL,
+    id_usuario_cierre BIGINT, -- Puede ser nulo hasta que cierren
+    fecha_apertura TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_cierre TIMESTAMP,
+    monto_inicial DECIMAL(10, 2) NOT NULL,
+    monto_final_sistema DECIMAL(10, 2), -- Lo que el sistema dice que hay
+    monto_final_real DECIMAL(10, 2), -- Lo que el cajero contó (para arqueo)
+    estado VARCHAR(20) DEFAULT 'ABIERTA', -- 'ABIERTA', 'CERRADA'
+    CONSTRAINT fk_caja_usuario FOREIGN KEY (id_usuario_apertura) REFERENCES usuario(id)
+);
+
+CREATE TABLE ticket (
+    id BIGSERIAL PRIMARY KEY,
+    id_caja BIGINT NOT NULL, -- Vinculado al turno de caja
+    id_cliente BIGINT, -- Nulo si es cliente anónimo
+    id_usuario BIGINT NOT NULL, -- Cajero que hizo la venta
+    fecha_emision TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total_venta DECIMAL(10, 2) NOT NULL,
+    metodo_pago VARCHAR(50) DEFAULT 'EFECTIVO', -- 'TARJETA', 'QR', etc.
+    estado VARCHAR(20) DEFAULT 'PAGADO', -- 'PAGADO', 'ANULADO'
+    CONSTRAINT fk_ticket_caja FOREIGN KEY (id_caja) REFERENCES caja(id),
+    CONSTRAINT fk_ticket_cliente FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    CONSTRAINT fk_ticket_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+);
+
+CREATE TABLE detalle_ticket (
+    id BIGSERIAL PRIMARY KEY,
+    id_ticket BIGINT NOT NULL,
+    id_producto BIGINT NOT NULL,
+    cantidad INT NOT NULL,
+    precio_unitario DECIMAL(10, 2) NOT NULL, -- Se guarda por si el precio cambia a futuro
+    subtotal DECIMAL(10, 2) NOT NULL,
+    CONSTRAINT fk_detalle_ticket FOREIGN KEY (id_ticket) REFERENCES ticket(id) ON DELETE CASCADE,
+    CONSTRAINT fk_detalle_producto FOREIGN KEY (id_producto) REFERENCES producto(id)
+);
+
+-- INDICES RECOMENDADOS (Para optimizar C# y búsquedas)
+CREATE INDEX idx_usuario_email ON usuario(email);
+CREATE INDEX idx_ticket_fecha ON ticket(fecha_emision);
+CREATE INDEX idx_inventario_nombre ON inventario(nombre);
