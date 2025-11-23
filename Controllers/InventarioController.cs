@@ -8,7 +8,6 @@ namespace CafeteriaBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
     public class InventarioController : ControllerBase
     {
         private readonly CafeteriaContext _context;
@@ -20,6 +19,7 @@ namespace CafeteriaBackend.Controllers
 
         // GET: api/Inventario
         [HttpGet]
+        [Authorize(Roles = "Admin,Proveedor")]
         public async Task<ActionResult<IEnumerable<Inventario>>> GetInventarios()
         {
             return await _context.Inventarios.OrderBy(i => i.Nombre).ToListAsync();
@@ -27,6 +27,7 @@ namespace CafeteriaBackend.Controllers
 
         // GET: api/Inventario
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin,Proveedor")]
         public async Task<ActionResult<Inventario>> GetInventario(long id)
         {
             var inventario = await _context.Inventarios.FindAsync(id);
@@ -41,6 +42,7 @@ namespace CafeteriaBackend.Controllers
 
         // POST: api/Inventario
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Inventario>> PostInventario(Inventario inventario)
         {
             _context.Inventarios.Add(inventario);
@@ -51,6 +53,7 @@ namespace CafeteriaBackend.Controllers
 
         // PUT: api/Inventario
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutInventario(long id, Inventario inventario)
         {
             if (id != inventario.Id)
@@ -81,6 +84,7 @@ namespace CafeteriaBackend.Controllers
 
         // DELETE: api/Inventario
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteInventario(long id)
         {
             var inventario = await _context.Inventarios.FindAsync(id);
