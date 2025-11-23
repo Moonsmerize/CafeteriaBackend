@@ -7,7 +7,7 @@ namespace CafeteriaBackend.Data
     {
         public CafeteriaContext(DbContextOptions<CafeteriaContext> options) : base(options) { }
 
-        // 1. DBSETS: Representan las tablas en C#
+        // Esta es la representacion de las tablas en C#
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Rol> Roles { get; set; }
         public DbSet<Permiso> Permisos { get; set; }
@@ -20,10 +20,10 @@ namespace CafeteriaBackend.Data
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<DetalleTicket> DetalleTickets { get; set; }
 
-        // 2. CONFIGURACIÓN DETALLADA
+        // Configuracion de las relaciones entre tablas
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // --- Mapeo de nombres de tablas (para asegurar minúsculas) ---
+            // Nombres de las tablas
             modelBuilder.Entity<Usuario>().ToTable("usuario");
             modelBuilder.Entity<Rol>().ToTable("rol");
             modelBuilder.Entity<Permiso>().ToTable("permiso");
@@ -36,9 +36,8 @@ namespace CafeteriaBackend.Data
             modelBuilder.Entity<Ticket>().ToTable("ticket");
             modelBuilder.Entity<DetalleTicket>().ToTable("detalle_ticket");
 
-            // --- Configuración de Relaciones ---
+            // Configuracion de Relaciones
 
-            // 1. Muchos a Muchos: Roles <-> Permisos
             modelBuilder.Entity<Rol>()
                 .HasMany(r => r.Permisos)
                 .WithMany(p => p.Roles)
@@ -52,14 +51,14 @@ namespace CafeteriaBackend.Data
                         j.ToTable("roles_permisos");
                     });
 
-            // 2. Usuario -> Rol
+            //  Usuario -> Rol
             modelBuilder.Entity<Usuario>()
                 .HasOne(u => u.Rol)
                 .WithMany(r => r.Usuarios)
                 .HasForeignKey(u => u.IdRol)
                 .HasConstraintName("fk_usuario_rol");
 
-            // 3. Receta (Producto <-> Inventario)
+            //  Receta (Producto <-> Inventario)
             modelBuilder.Entity<Receta>()
                 .HasOne(r => r.Producto)
                 .WithMany(p => p.Recetas)
@@ -72,21 +71,19 @@ namespace CafeteriaBackend.Data
                 .HasForeignKey(r => r.IdInventario)
                 .HasConstraintName("fk_receta_inventario");
 
-            // 4. Caja (¡OJO! Tiene dos relaciones con Usuario)
+            // Caja 
             modelBuilder.Entity<Caja>()
                 .HasOne(c => c.UsuarioApertura)
-                .WithMany(u => u.CajasApertura) // Debes asegurarte de tener esta prop en Usuario
+                .WithMany(u => u.CajasApertura)
                 .HasForeignKey(c => c.IdUsuarioApertura)
                 .HasConstraintName("fk_caja_usuario");
 
-            // La relación de cierre es opcional y no la pusimos en la clase Usuario para no saturarla,
-            // así que la configuramos aquí sin navegación inversa obligatoria:
             modelBuilder.Entity<Caja>()
                 .HasOne(c => c.UsuarioCierre)
                 .WithMany()
                 .HasForeignKey(c => c.IdUsuarioCierre);
 
-            // 5. Ticket -> Caja, Cliente, Usuario
+            // Ticket -> Caja, Cliente, Usuario
             modelBuilder.Entity<Ticket>()
                 .HasOne(t => t.Caja)
                 .WithMany()
@@ -105,7 +102,7 @@ namespace CafeteriaBackend.Data
                 .HasForeignKey(t => t.IdUsuario)
                 .HasConstraintName("fk_ticket_usuario");
 
-            // 6. DetalleTicket -> Ticket, Producto
+            // DetalleTicket -> Ticket, Producto
             modelBuilder.Entity<DetalleTicket>()
                 .HasOne(d => d.Ticket)
                 .WithMany(t => t.Detalles)

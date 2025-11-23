@@ -23,7 +23,6 @@ namespace CafeteriaBackend.Models
 		[Column("subtotal")]
 		public decimal Subtotal { get; set; }
 
-		// IMPORTANTE: En JSON ignoramos la vuelta al Ticket para evitar ciclos infinitos
 		[System.Text.Json.Serialization.JsonIgnore]
 		public virtual Ticket? Ticket { get; set; }
 		public virtual Producto? Producto { get; set; }

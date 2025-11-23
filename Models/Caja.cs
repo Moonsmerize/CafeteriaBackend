@@ -32,7 +32,7 @@ namespace CafeteriaBackend.Models
         [Column("estado")]
         public string? Estado { get; set; }
 
-        // Propiedades de navegación (se configuran en el DbContext)
+        // Propiedades de navegació
         public virtual Usuario? UsuarioApertura { get; set; }
         public virtual Usuario? UsuarioCierre { get; set; }
     }
