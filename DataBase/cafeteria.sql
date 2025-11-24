@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict CPVYAjuMxDBjKPjlRNha22P1HperbcodjGfgEXaTQdaIQfWKFzECXub8D1hsZUX
+\restrict 2DUn2piaOleceAOMaKolQipjmp43zVC9iz6hAAsYsrrAsUnazyn3dt0fjvDMgpx
 
 -- Dumped from database version 18.1
 -- Dumped by pg_dump version 18.1
 
--- Started on 2025-11-23 00:13:25
+-- Started on 2025-11-23 20:57:35
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -26,7 +26,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 239 (class 1259 OID 16538)
+-- TOC entry 219 (class 1259 OID 16728)
 -- Name: caja; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -44,7 +44,7 @@ CREATE TABLE public.caja (
 
 
 --
--- TOC entry 238 (class 1259 OID 16537)
+-- TOC entry 220 (class 1259 OID 16736)
 -- Name: caja_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -57,8 +57,8 @@ CREATE SEQUENCE public.caja_id_seq
 
 
 --
--- TOC entry 5065 (class 0 OID 0)
--- Dependencies: 238
+-- TOC entry 5166 (class 0 OID 0)
+-- Dependencies: 220
 -- Name: caja_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -66,7 +66,7 @@ ALTER SEQUENCE public.caja_id_seq OWNED BY public.caja.id;
 
 
 --
--- TOC entry 237 (class 1259 OID 16529)
+-- TOC entry 221 (class 1259 OID 16737)
 -- Name: cliente; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -81,7 +81,7 @@ CREATE TABLE public.cliente (
 
 
 --
--- TOC entry 236 (class 1259 OID 16528)
+-- TOC entry 222 (class 1259 OID 16742)
 -- Name: cliente_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -94,8 +94,8 @@ CREATE SEQUENCE public.cliente_id_seq
 
 
 --
--- TOC entry 5066 (class 0 OID 0)
--- Dependencies: 236
+-- TOC entry 5167 (class 0 OID 0)
+-- Dependencies: 222
 -- Name: cliente_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -103,7 +103,7 @@ ALTER SEQUENCE public.cliente_id_seq OWNED BY public.cliente.id;
 
 
 --
--- TOC entry 243 (class 1259 OID 16584)
+-- TOC entry 223 (class 1259 OID 16743)
 -- Name: detalle_ticket; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -118,7 +118,7 @@ CREATE TABLE public.detalle_ticket (
 
 
 --
--- TOC entry 242 (class 1259 OID 16583)
+-- TOC entry 224 (class 1259 OID 16752)
 -- Name: detalle_ticket_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -131,8 +131,8 @@ CREATE SEQUENCE public.detalle_ticket_id_seq
 
 
 --
--- TOC entry 5067 (class 0 OID 0)
--- Dependencies: 242
+-- TOC entry 5168 (class 0 OID 0)
+-- Dependencies: 224
 -- Name: detalle_ticket_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -140,7 +140,7 @@ ALTER SEQUENCE public.detalle_ticket_id_seq OWNED BY public.detalle_ticket.id;
 
 
 --
--- TOC entry 229 (class 1259 OID 16460)
+-- TOC entry 225 (class 1259 OID 16753)
 -- Name: inventario; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -155,7 +155,7 @@ CREATE TABLE public.inventario (
 
 
 --
--- TOC entry 228 (class 1259 OID 16459)
+-- TOC entry 226 (class 1259 OID 16763)
 -- Name: inventario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -168,8 +168,8 @@ CREATE SEQUENCE public.inventario_id_seq
 
 
 --
--- TOC entry 5068 (class 0 OID 0)
--- Dependencies: 228
+-- TOC entry 5169 (class 0 OID 0)
+-- Dependencies: 226
 -- Name: inventario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -177,7 +177,7 @@ ALTER SEQUENCE public.inventario_id_seq OWNED BY public.inventario.id;
 
 
 --
--- TOC entry 222 (class 1259 OID 16400)
+-- TOC entry 227 (class 1259 OID 16764)
 -- Name: permiso; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -189,7 +189,7 @@ CREATE TABLE public.permiso (
 
 
 --
--- TOC entry 221 (class 1259 OID 16399)
+-- TOC entry 228 (class 1259 OID 16770)
 -- Name: permiso_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -202,8 +202,8 @@ CREATE SEQUENCE public.permiso_id_seq
 
 
 --
--- TOC entry 5069 (class 0 OID 0)
--- Dependencies: 221
+-- TOC entry 5170 (class 0 OID 0)
+-- Dependencies: 228
 -- Name: permiso_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -211,7 +211,7 @@ ALTER SEQUENCE public.permiso_id_seq OWNED BY public.permiso.id;
 
 
 --
--- TOC entry 233 (class 1259 OID 16494)
+-- TOC entry 229 (class 1259 OID 16771)
 -- Name: producto; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -227,7 +227,7 @@ CREATE TABLE public.producto (
 
 
 --
--- TOC entry 232 (class 1259 OID 16493)
+-- TOC entry 230 (class 1259 OID 16781)
 -- Name: producto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -240,8 +240,8 @@ CREATE SEQUENCE public.producto_id_seq
 
 
 --
--- TOC entry 5070 (class 0 OID 0)
--- Dependencies: 232
+-- TOC entry 5171 (class 0 OID 0)
+-- Dependencies: 230
 -- Name: producto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -249,7 +249,7 @@ ALTER SEQUENCE public.producto_id_seq OWNED BY public.producto.id;
 
 
 --
--- TOC entry 227 (class 1259 OID 16450)
+-- TOC entry 231 (class 1259 OID 16782)
 -- Name: proveedor; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -264,7 +264,7 @@ CREATE TABLE public.proveedor (
 
 
 --
--- TOC entry 226 (class 1259 OID 16449)
+-- TOC entry 232 (class 1259 OID 16788)
 -- Name: proveedor_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -277,8 +277,8 @@ CREATE SEQUENCE public.proveedor_id_seq
 
 
 --
--- TOC entry 5071 (class 0 OID 0)
--- Dependencies: 226
+-- TOC entry 5172 (class 0 OID 0)
+-- Dependencies: 232
 -- Name: proveedor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -286,7 +286,7 @@ ALTER SEQUENCE public.proveedor_id_seq OWNED BY public.proveedor.id;
 
 
 --
--- TOC entry 235 (class 1259 OID 16508)
+-- TOC entry 233 (class 1259 OID 16789)
 -- Name: receta; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -299,7 +299,7 @@ CREATE TABLE public.receta (
 
 
 --
--- TOC entry 234 (class 1259 OID 16507)
+-- TOC entry 234 (class 1259 OID 16796)
 -- Name: receta_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -312,7 +312,7 @@ CREATE SEQUENCE public.receta_id_seq
 
 
 --
--- TOC entry 5072 (class 0 OID 0)
+-- TOC entry 5173 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: receta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -321,7 +321,7 @@ ALTER SEQUENCE public.receta_id_seq OWNED BY public.receta.id;
 
 
 --
--- TOC entry 231 (class 1259 OID 16474)
+-- TOC entry 235 (class 1259 OID 16797)
 -- Name: rel_proveedor_inventario; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -335,7 +335,7 @@ CREATE TABLE public.rel_proveedor_inventario (
 
 
 --
--- TOC entry 230 (class 1259 OID 16473)
+-- TOC entry 236 (class 1259 OID 16803)
 -- Name: rel_proveedor_inventario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -348,8 +348,8 @@ CREATE SEQUENCE public.rel_proveedor_inventario_id_seq
 
 
 --
--- TOC entry 5073 (class 0 OID 0)
--- Dependencies: 230
+-- TOC entry 5174 (class 0 OID 0)
+-- Dependencies: 236
 -- Name: rel_proveedor_inventario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -357,7 +357,7 @@ ALTER SEQUENCE public.rel_proveedor_inventario_id_seq OWNED BY public.rel_provee
 
 
 --
--- TOC entry 220 (class 1259 OID 16389)
+-- TOC entry 237 (class 1259 OID 16804)
 -- Name: rol; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -369,7 +369,7 @@ CREATE TABLE public.rol (
 
 
 --
--- TOC entry 219 (class 1259 OID 16388)
+-- TOC entry 238 (class 1259 OID 16809)
 -- Name: rol_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -382,8 +382,8 @@ CREATE SEQUENCE public.rol_id_seq
 
 
 --
--- TOC entry 5074 (class 0 OID 0)
--- Dependencies: 219
+-- TOC entry 5175 (class 0 OID 0)
+-- Dependencies: 238
 -- Name: rol_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -391,7 +391,7 @@ ALTER SEQUENCE public.rol_id_seq OWNED BY public.rol.id;
 
 
 --
--- TOC entry 223 (class 1259 OID 16411)
+-- TOC entry 239 (class 1259 OID 16810)
 -- Name: roles_permisos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -402,7 +402,7 @@ CREATE TABLE public.roles_permisos (
 
 
 --
--- TOC entry 241 (class 1259 OID 16555)
+-- TOC entry 240 (class 1259 OID 16815)
 -- Name: ticket; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -419,7 +419,7 @@ CREATE TABLE public.ticket (
 
 
 --
--- TOC entry 240 (class 1259 OID 16554)
+-- TOC entry 241 (class 1259 OID 16825)
 -- Name: ticket_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -432,8 +432,8 @@ CREATE SEQUENCE public.ticket_id_seq
 
 
 --
--- TOC entry 5075 (class 0 OID 0)
--- Dependencies: 240
+-- TOC entry 5176 (class 0 OID 0)
+-- Dependencies: 241
 -- Name: ticket_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -441,7 +441,7 @@ ALTER SEQUENCE public.ticket_id_seq OWNED BY public.ticket.id;
 
 
 --
--- TOC entry 225 (class 1259 OID 16429)
+-- TOC entry 242 (class 1259 OID 16826)
 -- Name: usuario; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -457,7 +457,7 @@ CREATE TABLE public.usuario (
 
 
 --
--- TOC entry 224 (class 1259 OID 16428)
+-- TOC entry 243 (class 1259 OID 16836)
 -- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -470,8 +470,8 @@ CREATE SEQUENCE public.usuario_id_seq
 
 
 --
--- TOC entry 5076 (class 0 OID 0)
--- Dependencies: 224
+-- TOC entry 5177 (class 0 OID 0)
+-- Dependencies: 243
 -- Name: usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -479,7 +479,7 @@ ALTER SEQUENCE public.usuario_id_seq OWNED BY public.usuario.id;
 
 
 --
--- TOC entry 4832 (class 2604 OID 16541)
+-- TOC entry 4915 (class 2604 OID 16961)
 -- Name: caja id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -487,7 +487,7 @@ ALTER TABLE ONLY public.caja ALTER COLUMN id SET DEFAULT nextval('public.caja_id
 
 
 --
--- TOC entry 4830 (class 2604 OID 16532)
+-- TOC entry 4918 (class 2604 OID 16962)
 -- Name: cliente id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -495,7 +495,7 @@ ALTER TABLE ONLY public.cliente ALTER COLUMN id SET DEFAULT nextval('public.clie
 
 
 --
--- TOC entry 4839 (class 2604 OID 16587)
+-- TOC entry 4920 (class 2604 OID 16963)
 -- Name: detalle_ticket id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -503,7 +503,7 @@ ALTER TABLE ONLY public.detalle_ticket ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 4821 (class 2604 OID 16463)
+-- TOC entry 4921 (class 2604 OID 16964)
 -- Name: inventario id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -511,7 +511,7 @@ ALTER TABLE ONLY public.inventario ALTER COLUMN id SET DEFAULT nextval('public.i
 
 
 --
--- TOC entry 4815 (class 2604 OID 16403)
+-- TOC entry 4925 (class 2604 OID 16965)
 -- Name: permiso id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -519,7 +519,7 @@ ALTER TABLE ONLY public.permiso ALTER COLUMN id SET DEFAULT nextval('public.perm
 
 
 --
--- TOC entry 4826 (class 2604 OID 16497)
+-- TOC entry 4926 (class 2604 OID 16966)
 -- Name: producto id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -527,7 +527,7 @@ ALTER TABLE ONLY public.producto ALTER COLUMN id SET DEFAULT nextval('public.pro
 
 
 --
--- TOC entry 4819 (class 2604 OID 16453)
+-- TOC entry 4929 (class 2604 OID 16967)
 -- Name: proveedor id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -535,7 +535,7 @@ ALTER TABLE ONLY public.proveedor ALTER COLUMN id SET DEFAULT nextval('public.pr
 
 
 --
--- TOC entry 4829 (class 2604 OID 16511)
+-- TOC entry 4931 (class 2604 OID 16968)
 -- Name: receta id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -543,7 +543,7 @@ ALTER TABLE ONLY public.receta ALTER COLUMN id SET DEFAULT nextval('public.recet
 
 
 --
--- TOC entry 4825 (class 2604 OID 16477)
+-- TOC entry 4932 (class 2604 OID 16969)
 -- Name: rel_proveedor_inventario id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -551,7 +551,7 @@ ALTER TABLE ONLY public.rel_proveedor_inventario ALTER COLUMN id SET DEFAULT nex
 
 
 --
--- TOC entry 4814 (class 2604 OID 16392)
+-- TOC entry 4933 (class 2604 OID 16970)
 -- Name: rol id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -559,7 +559,7 @@ ALTER TABLE ONLY public.rol ALTER COLUMN id SET DEFAULT nextval('public.rol_id_s
 
 
 --
--- TOC entry 4835 (class 2604 OID 16558)
+-- TOC entry 4934 (class 2604 OID 16971)
 -- Name: ticket id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -567,7 +567,7 @@ ALTER TABLE ONLY public.ticket ALTER COLUMN id SET DEFAULT nextval('public.ticke
 
 
 --
--- TOC entry 4816 (class 2604 OID 16432)
+-- TOC entry 4938 (class 2604 OID 16972)
 -- Name: usuario id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -575,8 +575,8 @@ ALTER TABLE ONLY public.usuario ALTER COLUMN id SET DEFAULT nextval('public.usua
 
 
 --
--- TOC entry 5055 (class 0 OID 16538)
--- Dependencies: 239
+-- TOC entry 5136 (class 0 OID 16728)
+-- Dependencies: 219
 -- Data for Name: caja; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -585,8 +585,8 @@ COPY public.caja (id, id_usuario_apertura, id_usuario_cierre, fecha_apertura, fe
 
 
 --
--- TOC entry 5053 (class 0 OID 16529)
--- Dependencies: 237
+-- TOC entry 5138 (class 0 OID 16737)
+-- Dependencies: 221
 -- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -595,8 +595,8 @@ COPY public.cliente (id, nombre, telefono, email, nit_rfc, puntos_acumulados) FR
 
 
 --
--- TOC entry 5059 (class 0 OID 16584)
--- Dependencies: 243
+-- TOC entry 5140 (class 0 OID 16743)
+-- Dependencies: 223
 -- Data for Name: detalle_ticket; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -605,18 +605,20 @@ COPY public.detalle_ticket (id, id_ticket, id_producto, cantidad, precio_unitari
 
 
 --
--- TOC entry 5045 (class 0 OID 16460)
--- Dependencies: 229
+-- TOC entry 5142 (class 0 OID 16753)
+-- Dependencies: 225
 -- Data for Name: inventario; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.inventario (id, nombre, descripcion, stock_actual, stock_minimo, costo_promedio) FROM stdin;
+1	Grano de cafe	Cafe premium	10.0000	5.0000	100.00
+2	Leche entera Lt	Leche entera (Litros)	20.0000	5.0000	25.00
 \.
 
 
 --
--- TOC entry 5038 (class 0 OID 16400)
--- Dependencies: 222
+-- TOC entry 5144 (class 0 OID 16764)
+-- Dependencies: 227
 -- Data for Name: permiso; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -625,8 +627,8 @@ COPY public.permiso (id, nombre, codigo_interno) FROM stdin;
 
 
 --
--- TOC entry 5049 (class 0 OID 16494)
--- Dependencies: 233
+-- TOC entry 5146 (class 0 OID 16771)
+-- Dependencies: 229
 -- Data for Name: producto; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -639,18 +641,19 @@ COPY public.producto (id, nombre, precio_venta, imagen_url, categoria, es_compue
 
 
 --
--- TOC entry 5043 (class 0 OID 16450)
--- Dependencies: 227
+-- TOC entry 5148 (class 0 OID 16782)
+-- Dependencies: 231
 -- Data for Name: proveedor; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.proveedor (id, nombre_empresa, nombre_contacto, telefono, email, activo) FROM stdin;
+1	Nescafe	\N	\N	proveedor1@cafeteria.com	t
 \.
 
 
 --
--- TOC entry 5051 (class 0 OID 16508)
--- Dependencies: 235
+-- TOC entry 5150 (class 0 OID 16789)
+-- Dependencies: 233
 -- Data for Name: receta; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -659,30 +662,32 @@ COPY public.receta (id, id_producto, id_inventario, cantidad_requerida) FROM std
 
 
 --
--- TOC entry 5047 (class 0 OID 16474)
--- Dependencies: 231
+-- TOC entry 5152 (class 0 OID 16797)
+-- Dependencies: 235
 -- Data for Name: rel_proveedor_inventario; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.rel_proveedor_inventario (id, id_proveedor, id_inventario, precio_ultimo_costo, codigo_catalogo_proveedor) FROM stdin;
+1	1	1	150.00	
 \.
 
 
 --
--- TOC entry 5036 (class 0 OID 16389)
--- Dependencies: 220
+-- TOC entry 5154 (class 0 OID 16804)
+-- Dependencies: 237
 -- Data for Name: rol; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.rol (id, nombre, descripcion) FROM stdin;
 1	Admin	Administrador del sistema
 2	Empleado	Cajero y mesero
+3	Proveedor	Acceso limitado al inventario
 \.
 
 
 --
--- TOC entry 5039 (class 0 OID 16411)
--- Dependencies: 223
+-- TOC entry 5156 (class 0 OID 16810)
+-- Dependencies: 239
 -- Data for Name: roles_permisos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -691,8 +696,8 @@ COPY public.roles_permisos (id_rol, id_permiso) FROM stdin;
 
 
 --
--- TOC entry 5057 (class 0 OID 16555)
--- Dependencies: 241
+-- TOC entry 5157 (class 0 OID 16815)
+-- Dependencies: 240
 -- Data for Name: ticket; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -701,19 +706,20 @@ COPY public.ticket (id, id_caja, id_cliente, id_usuario, fecha_emision, total_ve
 
 
 --
--- TOC entry 5041 (class 0 OID 16429)
--- Dependencies: 225
+-- TOC entry 5159 (class 0 OID 16826)
+-- Dependencies: 242
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.usuario (id, id_rol, nombre_completo, email, password_hash, activo, fecha_creacion) FROM stdin;
 1	1	Nestor Luna	admin@cafeteria.com	$2a$11$pbLGpQyKcZ0IBPvmXFbVhu/Xoap/xVh0CHcKQGT/yt7rVcBjey5vm	t	2025-11-22 18:33:23.51363
+2	3	proveedor	proveedor1@cafeteria.com	$2a$11$wHswAtNnE42gPUsK7zcsIuI92nJ6QN3nkolTD0GLWvjY2lyI0KiIS	t	2025-11-23 18:00:36.92501
 \.
 
 
 --
--- TOC entry 5077 (class 0 OID 0)
--- Dependencies: 238
+-- TOC entry 5178 (class 0 OID 0)
+-- Dependencies: 220
 -- Name: caja_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -721,8 +727,8 @@ SELECT pg_catalog.setval('public.caja_id_seq', 1, false);
 
 
 --
--- TOC entry 5078 (class 0 OID 0)
--- Dependencies: 236
+-- TOC entry 5179 (class 0 OID 0)
+-- Dependencies: 222
 -- Name: cliente_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -730,8 +736,8 @@ SELECT pg_catalog.setval('public.cliente_id_seq', 1, false);
 
 
 --
--- TOC entry 5079 (class 0 OID 0)
--- Dependencies: 242
+-- TOC entry 5180 (class 0 OID 0)
+-- Dependencies: 224
 -- Name: detalle_ticket_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -739,8 +745,8 @@ SELECT pg_catalog.setval('public.detalle_ticket_id_seq', 1, false);
 
 
 --
--- TOC entry 5080 (class 0 OID 0)
--- Dependencies: 228
+-- TOC entry 5181 (class 0 OID 0)
+-- Dependencies: 226
 -- Name: inventario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -748,8 +754,8 @@ SELECT pg_catalog.setval('public.inventario_id_seq', 1, false);
 
 
 --
--- TOC entry 5081 (class 0 OID 0)
--- Dependencies: 221
+-- TOC entry 5182 (class 0 OID 0)
+-- Dependencies: 228
 -- Name: permiso_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -757,8 +763,8 @@ SELECT pg_catalog.setval('public.permiso_id_seq', 1, false);
 
 
 --
--- TOC entry 5082 (class 0 OID 0)
--- Dependencies: 232
+-- TOC entry 5183 (class 0 OID 0)
+-- Dependencies: 230
 -- Name: producto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -766,16 +772,16 @@ SELECT pg_catalog.setval('public.producto_id_seq', 4, true);
 
 
 --
--- TOC entry 5083 (class 0 OID 0)
--- Dependencies: 226
+-- TOC entry 5184 (class 0 OID 0)
+-- Dependencies: 232
 -- Name: proveedor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.proveedor_id_seq', 1, false);
+SELECT pg_catalog.setval('public.proveedor_id_seq', 1, true);
 
 
 --
--- TOC entry 5084 (class 0 OID 0)
+-- TOC entry 5185 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: receta_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -784,8 +790,8 @@ SELECT pg_catalog.setval('public.receta_id_seq', 1, false);
 
 
 --
--- TOC entry 5085 (class 0 OID 0)
--- Dependencies: 230
+-- TOC entry 5186 (class 0 OID 0)
+-- Dependencies: 236
 -- Name: rel_proveedor_inventario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -793,8 +799,8 @@ SELECT pg_catalog.setval('public.rel_proveedor_inventario_id_seq', 1, false);
 
 
 --
--- TOC entry 5086 (class 0 OID 0)
--- Dependencies: 219
+-- TOC entry 5187 (class 0 OID 0)
+-- Dependencies: 238
 -- Name: rol_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -802,8 +808,8 @@ SELECT pg_catalog.setval('public.rol_id_seq', 3, true);
 
 
 --
--- TOC entry 5087 (class 0 OID 0)
--- Dependencies: 240
+-- TOC entry 5188 (class 0 OID 0)
+-- Dependencies: 241
 -- Name: ticket_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -811,16 +817,16 @@ SELECT pg_catalog.setval('public.ticket_id_seq', 1, false);
 
 
 --
--- TOC entry 5088 (class 0 OID 0)
--- Dependencies: 224
+-- TOC entry 5189 (class 0 OID 0)
+-- Dependencies: 243
 -- Name: usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.usuario_id_seq', 1, true);
+SELECT pg_catalog.setval('public.usuario_id_seq', 14, true);
 
 
 --
--- TOC entry 4869 (class 2606 OID 16548)
+-- TOC entry 4942 (class 2606 OID 16850)
 -- Name: caja caja_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -829,7 +835,7 @@ ALTER TABLE ONLY public.caja
 
 
 --
--- TOC entry 4867 (class 2606 OID 16536)
+-- TOC entry 4944 (class 2606 OID 16852)
 -- Name: cliente cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -838,7 +844,7 @@ ALTER TABLE ONLY public.cliente
 
 
 --
--- TOC entry 4874 (class 2606 OID 16595)
+-- TOC entry 4946 (class 2606 OID 16854)
 -- Name: detalle_ticket detalle_ticket_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -847,7 +853,7 @@ ALTER TABLE ONLY public.detalle_ticket
 
 
 --
--- TOC entry 4859 (class 2606 OID 16472)
+-- TOC entry 4949 (class 2606 OID 16856)
 -- Name: inventario inventario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -856,7 +862,7 @@ ALTER TABLE ONLY public.inventario
 
 
 --
--- TOC entry 4845 (class 2606 OID 16410)
+-- TOC entry 4951 (class 2606 OID 16858)
 -- Name: permiso permiso_codigo_interno_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -865,7 +871,7 @@ ALTER TABLE ONLY public.permiso
 
 
 --
--- TOC entry 4847 (class 2606 OID 16408)
+-- TOC entry 4953 (class 2606 OID 16860)
 -- Name: permiso permiso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -874,7 +880,7 @@ ALTER TABLE ONLY public.permiso
 
 
 --
--- TOC entry 4863 (class 2606 OID 16506)
+-- TOC entry 4955 (class 2606 OID 16862)
 -- Name: producto producto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -883,7 +889,7 @@ ALTER TABLE ONLY public.producto
 
 
 --
--- TOC entry 4856 (class 2606 OID 16458)
+-- TOC entry 4957 (class 2606 OID 16864)
 -- Name: proveedor proveedor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -892,7 +898,7 @@ ALTER TABLE ONLY public.proveedor
 
 
 --
--- TOC entry 4865 (class 2606 OID 16517)
+-- TOC entry 4959 (class 2606 OID 16866)
 -- Name: receta receta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -901,7 +907,7 @@ ALTER TABLE ONLY public.receta
 
 
 --
--- TOC entry 4861 (class 2606 OID 16482)
+-- TOC entry 4961 (class 2606 OID 16868)
 -- Name: rel_proveedor_inventario rel_proveedor_inventario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -910,7 +916,7 @@ ALTER TABLE ONLY public.rel_proveedor_inventario
 
 
 --
--- TOC entry 4841 (class 2606 OID 16398)
+-- TOC entry 4963 (class 2606 OID 16870)
 -- Name: rol rol_nombre_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -919,7 +925,7 @@ ALTER TABLE ONLY public.rol
 
 
 --
--- TOC entry 4843 (class 2606 OID 16396)
+-- TOC entry 4965 (class 2606 OID 16872)
 -- Name: rol rol_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -928,7 +934,7 @@ ALTER TABLE ONLY public.rol
 
 
 --
--- TOC entry 4849 (class 2606 OID 16417)
+-- TOC entry 4967 (class 2606 OID 16874)
 -- Name: roles_permisos roles_permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -937,7 +943,7 @@ ALTER TABLE ONLY public.roles_permisos
 
 
 --
--- TOC entry 4872 (class 2606 OID 16567)
+-- TOC entry 4970 (class 2606 OID 16876)
 -- Name: ticket ticket_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -946,7 +952,7 @@ ALTER TABLE ONLY public.ticket
 
 
 --
--- TOC entry 4852 (class 2606 OID 16443)
+-- TOC entry 4973 (class 2606 OID 16878)
 -- Name: usuario usuario_email_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -955,7 +961,7 @@ ALTER TABLE ONLY public.usuario
 
 
 --
--- TOC entry 4854 (class 2606 OID 16441)
+-- TOC entry 4975 (class 2606 OID 16880)
 -- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -964,7 +970,7 @@ ALTER TABLE ONLY public.usuario
 
 
 --
--- TOC entry 4857 (class 1259 OID 16608)
+-- TOC entry 4947 (class 1259 OID 16881)
 -- Name: idx_inventario_nombre; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -972,7 +978,7 @@ CREATE INDEX idx_inventario_nombre ON public.inventario USING btree (nombre);
 
 
 --
--- TOC entry 4870 (class 1259 OID 16607)
+-- TOC entry 4968 (class 1259 OID 16882)
 -- Name: idx_ticket_fecha; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -980,7 +986,7 @@ CREATE INDEX idx_ticket_fecha ON public.ticket USING btree (fecha_emision);
 
 
 --
--- TOC entry 4850 (class 1259 OID 16606)
+-- TOC entry 4971 (class 1259 OID 16883)
 -- Name: idx_usuario_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -988,7 +994,7 @@ CREATE INDEX idx_usuario_email ON public.usuario USING btree (email);
 
 
 --
--- TOC entry 4882 (class 2606 OID 16549)
+-- TOC entry 4976 (class 2606 OID 16884)
 -- Name: caja fk_caja_usuario; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -997,7 +1003,7 @@ ALTER TABLE ONLY public.caja
 
 
 --
--- TOC entry 4886 (class 2606 OID 16601)
+-- TOC entry 4977 (class 2606 OID 16889)
 -- Name: detalle_ticket fk_detalle_producto; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1006,7 +1012,7 @@ ALTER TABLE ONLY public.detalle_ticket
 
 
 --
--- TOC entry 4887 (class 2606 OID 16596)
+-- TOC entry 4978 (class 2606 OID 16894)
 -- Name: detalle_ticket fk_detalle_ticket; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1015,7 +1021,7 @@ ALTER TABLE ONLY public.detalle_ticket
 
 
 --
--- TOC entry 4880 (class 2606 OID 16523)
+-- TOC entry 4979 (class 2606 OID 16899)
 -- Name: receta fk_receta_inventario; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1024,7 +1030,7 @@ ALTER TABLE ONLY public.receta
 
 
 --
--- TOC entry 4881 (class 2606 OID 16518)
+-- TOC entry 4980 (class 2606 OID 16904)
 -- Name: receta fk_receta_producto; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1033,7 +1039,7 @@ ALTER TABLE ONLY public.receta
 
 
 --
--- TOC entry 4875 (class 2606 OID 16423)
+-- TOC entry 4983 (class 2606 OID 16909)
 -- Name: roles_permisos fk_rp_permiso; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1042,7 +1048,7 @@ ALTER TABLE ONLY public.roles_permisos
 
 
 --
--- TOC entry 4876 (class 2606 OID 16418)
+-- TOC entry 4984 (class 2606 OID 16914)
 -- Name: roles_permisos fk_rp_rol; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1051,7 +1057,7 @@ ALTER TABLE ONLY public.roles_permisos
 
 
 --
--- TOC entry 4878 (class 2606 OID 16488)
+-- TOC entry 4981 (class 2606 OID 16919)
 -- Name: rel_proveedor_inventario fk_rpi_inventario; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1060,7 +1066,7 @@ ALTER TABLE ONLY public.rel_proveedor_inventario
 
 
 --
--- TOC entry 4879 (class 2606 OID 16483)
+-- TOC entry 4982 (class 2606 OID 16924)
 -- Name: rel_proveedor_inventario fk_rpi_proveedor; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1069,7 +1075,7 @@ ALTER TABLE ONLY public.rel_proveedor_inventario
 
 
 --
--- TOC entry 4883 (class 2606 OID 16568)
+-- TOC entry 4985 (class 2606 OID 16929)
 -- Name: ticket fk_ticket_caja; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1078,7 +1084,7 @@ ALTER TABLE ONLY public.ticket
 
 
 --
--- TOC entry 4884 (class 2606 OID 16573)
+-- TOC entry 4986 (class 2606 OID 16934)
 -- Name: ticket fk_ticket_cliente; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1087,7 +1093,7 @@ ALTER TABLE ONLY public.ticket
 
 
 --
--- TOC entry 4885 (class 2606 OID 16578)
+-- TOC entry 4987 (class 2606 OID 16939)
 -- Name: ticket fk_ticket_usuario; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1096,7 +1102,7 @@ ALTER TABLE ONLY public.ticket
 
 
 --
--- TOC entry 4877 (class 2606 OID 16444)
+-- TOC entry 4988 (class 2606 OID 16944)
 -- Name: usuario fk_usuario_rol; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1104,11 +1110,11 @@ ALTER TABLE ONLY public.usuario
     ADD CONSTRAINT fk_usuario_rol FOREIGN KEY (id_rol) REFERENCES public.rol(id);
 
 
--- Completed on 2025-11-23 00:13:26
+-- Completed on 2025-11-23 20:57:38
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict CPVYAjuMxDBjKPjlRNha22P1HperbcodjGfgEXaTQdaIQfWKFzECXub8D1hsZUX
+\unrestrict 2DUn2piaOleceAOMaKolQipjmp43zVC9iz6hAAsYsrrAsUnazyn3dt0fjvDMgpx
 
