@@ -19,6 +19,7 @@ namespace CafeteriaBackend.Data
         public DbSet<Caja> Cajas { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<DetalleTicket> DetalleTickets { get; set; }
+        public DbSet<RelProveedorInventario> RelProveedorInventarios { get; set; }
 
         // Configuracion de las relaciones entre tablas
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -114,6 +115,18 @@ namespace CafeteriaBackend.Data
                 .WithMany()
                 .HasForeignKey(d => d.IdProducto)
                 .HasConstraintName("fk_detalle_producto");
+
+            modelBuilder.Entity<RelProveedorInventario>()
+                .HasOne(r => r.Proveedor)
+                .WithMany()
+                .HasForeignKey(r => r.IdProveedor)
+                .HasConstraintName("fk_rpi_proveedor");
+
+            modelBuilder.Entity<RelProveedorInventario>()
+                .HasOne(r => r.Inventario)
+                .WithMany()
+                .HasForeignKey(r => r.IdInventario)
+                .HasConstraintName("fk_rpi_inventario");
         }
     }
 }
