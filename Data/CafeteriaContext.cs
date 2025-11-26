@@ -20,6 +20,8 @@ namespace CafeteriaBackend.Data
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<DetalleTicket> DetalleTickets { get; set; }
         public DbSet<RelProveedorInventario> RelProveedorInventarios { get; set; }
+        public DbSet<OrdenCompra> OrdenCompras { get; set; }
+        public DbSet<DetalleOrdenCompra> DetalleOrdenCompras { get; set; }
 
         // Configuracion de las relaciones entre tablas
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -134,6 +136,30 @@ namespace CafeteriaBackend.Data
                 .WithMany()
                 .HasForeignKey(r => r.IdInventario)
                 .HasConstraintName("fk_rpi_inventario");
+
+            modelBuilder.Entity<OrdenCompra>()
+    .HasOne(o => o.Proveedor)
+    .WithMany()
+    .HasForeignKey(o => o.IdProveedor)
+    .HasConstraintName("fk_oc_proveedor");
+
+            modelBuilder.Entity<OrdenCompra>()
+                .HasOne(o => o.UsuarioSolicitante)
+                .WithMany()
+                .HasForeignKey(o => o.IdUsuarioSolicitante)
+                .HasConstraintName("fk_oc_usuario");
+
+            modelBuilder.Entity<DetalleOrdenCompra>()
+                .HasOne(d => d.OrdenCompra)
+                .WithMany(o => o.Detalles)
+                .HasForeignKey(d => d.IdOrdenCompra)
+                .HasConstraintName("fk_doc_orden");
+
+            modelBuilder.Entity<DetalleOrdenCompra>()
+                .HasOne(d => d.Inventario)
+                .WithMany()
+                .HasForeignKey(d => d.IdInventario)
+                .HasConstraintName("fk_doc_inventario");
         }
     }
 }
