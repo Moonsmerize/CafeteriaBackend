@@ -8,9 +8,6 @@ namespace CafeteriaBackend.Models
         [Column("id")]
         public long Id { get; set; }
 
-        [Column("id_rol")]
-        public long IdRol { get; set; }
-
         [Column("nombre_completo")]
         public string NombreCompleto { get; set; } = null!;
 
@@ -26,8 +23,7 @@ namespace CafeteriaBackend.Models
         [Column("fecha_creacion")]
         public DateTime? FechaCreacion { get; set; }
 
-        // Navegación
-        public virtual Rol? Rol { get; set; }
+        public virtual ICollection<Rol> Roles { get; set; } = new List<Rol>();
         public virtual ICollection<Caja> CajasApertura { get; set; } = new List<Caja>();
         public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
     }

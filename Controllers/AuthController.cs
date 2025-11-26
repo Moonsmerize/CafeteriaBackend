@@ -27,16 +27,16 @@ namespace CafeteriaBackend.Controllers
         [HttpPost("registro")]
         public async Task<ActionResult<Usuario>> Registrar(RegistroDto request)
         {
-            // 1. Validar si el correo ya existe
             if (await _context.Usuarios.AnyAsync(u => u.Email == request.Email))
             {
                 return BadRequest("El correo ya está registrado.");
             }
 
-            // 2. Validar que el rol exista
-            if (!await _context.Roles.AnyAsync(r => r.Id == request.IdRol))
+            // 2. Validar que el rol inicial exista
+            var rolInicial = await _context.Roles.FindAsync(request.IdRol);
+            if (rolInicial == null)
             {
-                return BadRequest($"El Rol con ID {request.IdRol} no existe. Crea primero los roles en la BD.");
+                return BadRequest($"El Rol con ID {request.IdRol} no existe.");
             }
 
             // 3. Encriptar contraseña
@@ -47,10 +47,11 @@ namespace CafeteriaBackend.Controllers
                 NombreCompleto = request.NombreCompleto,
                 Email = request.Email,
                 PasswordHash = passwordHash,
-                IdRol = request.IdRol,
                 Activo = true,
                 FechaCreacion = DateTime.UtcNow
             };
+
+            nuevoUsuario.Roles.Add(rolInicial);
 
             _context.Usuarios.Add(nuevoUsuario);
             await _context.SaveChangesAsync();
@@ -63,7 +64,7 @@ namespace CafeteriaBackend.Controllers
         public async Task<ActionResult<object>> Login(LoginDto request)
         {
             var usuario = await _context.Usuarios
-                .Include(u => u.Rol)
+                .Include(u => u.Roles) 
                 .FirstOrDefaultAsync(u => u.Email == request.Email);
 
             if (usuario == null || !BCrypt.Net.BCrypt.Verify(request.Password, usuario.PasswordHash))
@@ -78,12 +79,15 @@ namespace CafeteriaBackend.Controllers
 
             string token = CrearToken(usuario);
 
+            var primerRol = usuario.Roles.FirstOrDefault();
+
             return Ok(new
             {
                 token = token,
                 usuario = usuario.NombreCompleto,
-                rol = usuario.Rol?.Nombre,
-                rolId = usuario.IdRol
+                rol = primerRol?.Nombre ?? "Sin Rol",
+                rolId = primerRol?.Id ?? 0,
+                roles = usuario.Roles.Select(r => r.Nombre).ToList()
             });
         }
 
@@ -92,9 +96,12 @@ namespace CafeteriaBackend.Controllers
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
-                new Claim(ClaimTypes.Name, usuario.Email),
-                new Claim(ClaimTypes.Role, usuario.Rol?.Nombre ?? "Empleado")
+                new Claim(ClaimTypes.Name, usuario.Email)
             };
+            foreach (var rol in usuario.Roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, rol.Nombre));
+            }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
                 _configuration.GetSection("Jwt:Key").Value!));
@@ -104,8 +111,7 @@ namespace CafeteriaBackend.Controllers
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                // Aqui se configura el tiempo de vida de la sesion
-                Expires = DateTime.UtcNow.AddMinutes(10),
+                Expires = DateTime.UtcNow.AddMinutes(60),
                 SigningCredentials = creds
             };
 

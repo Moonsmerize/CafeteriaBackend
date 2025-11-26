@@ -54,10 +54,17 @@ namespace CafeteriaBackend.Data
 
             //  Usuario -> Rol
             modelBuilder.Entity<Usuario>()
-                .HasOne(u => u.Rol)
+                .HasMany(u => u.Roles)
                 .WithMany(r => r.Usuarios)
-                .HasForeignKey(u => u.IdRol)
-                .HasConstraintName("fk_usuario_rol");
+                .UsingEntity<Dictionary<string, object>>(
+                    "usuarios_roles",
+                    j => j.HasOne<Rol>().WithMany().HasForeignKey("id_rol"),
+                    j => j.HasOne<Usuario>().WithMany().HasForeignKey("id_usuario"),
+                    j =>
+                    {
+                        j.HasKey("id_usuario", "id_rol");
+                        j.ToTable("usuarios_roles");
+                    });
 
             //  Receta (Producto <-> Inventario)
             modelBuilder.Entity<Receta>()

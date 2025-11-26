@@ -11,7 +11,7 @@ namespace CafeteriaBackend.Models
         public string Nombre { get; set; } = null!;
         [Column("descripcion")]
         public string? Descripcion { get; set; }
-        public virtual ICollection<Permiso> Permisos { get; set; } = new List<Permiso>();
         public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
+        public virtual ICollection<Permiso> Permisos { get; set; } = new List<Permiso>();
     }
 }
