@@ -13,4 +13,15 @@ namespace CafeteriaBackend.DTOs
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
     }
+
+    public class ActualizarUsuarioDto
+    {
+        public long Id { get; set; }
+        public string NombreCompleto { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public string? Password { get; set; }
+        public long IdRol { get; set; }
+        public bool Activo { get; set; }
+    }
+
 }
