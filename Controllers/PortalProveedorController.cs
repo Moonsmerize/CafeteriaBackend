@@ -86,5 +86,37 @@ namespace CafeteriaBackend.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
+
+        [HttpGet("pedidos")]
+        public async Task<ActionResult<IEnumerable<object>>> GetMisPedidos()
+        {
+            var proveedor = await GetCurrentProveedor();
+            if (proveedor == null) return Unauthorized();
+
+            var pedidos = await _context.OrdenCompras
+                .Include(o => o.UsuarioSolicitante) 
+                .Include(o => o.Detalles)
+                    .ThenInclude(d => d.Inventario) 
+                .Where(o => o.IdProveedor == proveedor.Id)
+                .OrderByDescending(o => o.FechaOrden)
+                .Select(o => new
+                {
+                    o.Id,
+                    Fecha = o.FechaOrden,
+                    Solicitante = o.UsuarioSolicitante.NombreCompleto,
+                    o.Total,
+                    o.Estado,
+                    Detalles = o.Detalles.Select(d => new
+                    {
+                        Insumo = d.Inventario.Nombre,
+                        Cantidad = d.CantidadSolicitada,
+                        CostoPactado = d.CostoPactado
+                    })
+                })
+                .ToListAsync();
+
+            return Ok(pedidos);
+        }
+
     }
 }
