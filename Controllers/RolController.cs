@@ -22,7 +22,40 @@ namespace CafeteriaBackend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Rol>>> GetRoles()
         {
-            return await _context.Roles.OrderBy(r => r.Id).ToListAsync();
+            return await _context.Roles
+                .Include(r => r.Permisos)
+                .OrderBy(r => r.Id)
+                .ToListAsync();
+        }
+
+        // PUT: api/Rol/5/permisos
+        [HttpPut("{id}/permisos")]
+        public async Task<IActionResult> UpdateRolPermisos(long id, [FromBody] List<long> permisosIds)
+        {
+            var rol = await _context.Roles
+                .Include(r => r.Permisos)
+                .FirstOrDefaultAsync(r => r.Id == id);
+
+            if (rol == null) return NotFound("Rol no encontrado");
+
+            if (rol.Nombre == "Admin" && permisosIds.Count == 0)
+            {
+                return BadRequest("No puedes dejar al rol Admin sin permisos.");
+            }
+
+            rol.Permisos.Clear();
+
+            var nuevosPermisos = await _context.Permisos
+                .Where(p => permisosIds.Contains(p.Id))
+                .ToListAsync();
+
+            foreach (var permiso in nuevosPermisos)
+            {
+                rol.Permisos.Add(permiso);
+            }
+
+            await _context.SaveChangesAsync();
+            return NoContent();
         }
     }
 }
